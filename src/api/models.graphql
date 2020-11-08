@@ -1,0 +1,236 @@
+type User {
+  id: ID!
+  username: String
+  email: String!
+  posts: [Post!]
+  likes: [Like!]
+  unlikes: [Unlike!]
+  comments: [Comment!]
+  sigInSecret: String
+  inflow: String!
+  ageRange: String
+  birthday: String
+  certification: Boolean!
+  password: String
+  nickname: String
+  gender: String
+  watchedEpisode: [String!]
+  notification: [Notification!]
+  nEvent: Boolean!
+  subscription: [Post!]
+  status: String!
+  reports: [Report!]
+  reportedCount: Int
+  stopDay: Int
+  stopWatch: String
+  teamName: String
+  rank: String!
+  agreePrivacy: Boolean
+  secret: Secret
+  viewdEpisode: [ViewedEpisodeRecord!]
+  log: String
+  ip: String
+  createdAt: String
+  updatedAt: String
+}
+
+type Post {
+  id: ID!
+  teamName: User
+  likes: [Like!]
+  episodes: [Episode!]
+  title: String!
+  description: String!
+  uploadDay: [String!]
+  thumbnail: String!
+  backgroundImage: String!
+  s3ThumbnailId: String
+  s3BackgroundImageId: String
+  category: Category
+  subscriber: [User!]
+  broadcast: Boolean!
+  jokeCategory: JokeCategory
+  createdAt: String
+  updatedAt: String
+}
+
+type Episode {
+  id: ID!
+  likes: [Like!]
+  post: Post!
+  title: String!
+  description: String
+  thumbnail: String!
+  file: String!
+  s3ThumbnailId: String
+  s3FileId: String
+  comments: [Comment!]
+  hitCount: Int!
+  createdAt: String
+  updatedAt: String
+  endTime: Int
+  viewed: [ViewedEpisodeRecord!]
+  report: [Report!]
+}
+
+type ViewedEpisodeRecord {
+  id: ID!
+  user: User!
+  episode: Episode!
+  viewTime: String!
+}
+
+type Like {
+  id: ID!
+  user: User!
+  post: Post
+  episode: Episode
+  comment: Comment
+}
+
+type Unlike {
+  id: ID!
+  user: User!
+  comment: Comment!
+}
+
+type Comment {
+  id: ID!
+  user: User!
+  text: String!
+  episode: Episode!
+  offender: [Report!]
+  likes: [Like!]
+  unlikes: [Unlike!]
+  createdAt: String
+  updateAt: String
+}
+
+type Category {
+  id: ID!
+  post: [Post!]
+  genre: String!
+}
+
+type JokeCategory {
+  id: ID!
+  title: String!
+  posts: [Post!]
+  orderBy: Int!
+}
+
+type Banner {
+  id: ID!
+  image: String!
+  url: String
+  upload: Boolean!
+  orderBy: Int!
+  s3ThumbnailId: String
+  uploadTime: String
+  downTime: String
+}
+
+type Notification {
+  id: ID!
+  title: String!
+  text: String!
+  url: String
+  imgFile: String
+  s3ImgFile: String
+  users: [User!]
+  timeLimit: String
+  timeCreate: String
+}
+
+type ReportCategory {
+  id: ID!
+  category: String!
+  reason: String!
+  report: [Report!]
+}
+
+type Report {
+  id: ID!
+  user: User!
+  file: String
+  text: String
+  offender: Comment
+  episode: Episode
+  reportCategory: ReportCategory!
+  status: String!
+  createdAt: String
+}
+
+type Secret {
+  id: ID!
+  secretCode: Int
+  user: User
+  email: String
+}
+
+type KeepUser {
+  id: ID!
+  username: String
+  email: String!
+  posts: [KeepPost!]
+  comments: [KeepComment!]
+  sigInSecret: String
+  inflow: String
+  ageRange: String
+  birthday: String
+  certification: Boolean
+  password: String
+  nickname: String
+  gender: String
+  watchPost: [KeepPost!]
+  nEvent: Boolean!
+  agreePrivacy: Boolean
+  subscription: [KeepPost!]
+  status: String!
+  teamName: String
+  rank: String!
+  log: String
+  ip: String
+  createdAt: String
+  updatedAt: String
+}
+
+type KeepPost {
+  id: ID!
+  teamName: KeepUser!
+  episodes: [KeepEpisode!]
+  title: String!
+  description: String!
+  uploadDay: [String!]
+  thumbnail: String!
+  subscriber: [KeepUser!]
+  watchUser: [KeepUser!]
+  broadcast: Boolean!
+  postId: String!
+  createdAt: String
+  updatedAt: String
+}
+
+type KeepEpisode {
+  id: ID!
+  post: KeepPost!
+  title: String!
+  thumbnail: String!
+  file: String!
+  comments: [KeepComment!]
+  hitCount: Int!
+  episodeId: String
+  endTime: Int!
+  createdAt: String
+  updatedAt: String
+}
+
+type KeepComment {
+  id: ID!
+  user: KeepUser!
+  text: String!
+  episode: KeepEpisode!
+  commentId: String!
+  createdAt: String
+  updateAt: String
+}

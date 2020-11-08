@@ -1,0 +1,7 @@
+type Query {
+  searchTeamName(teamName: String!): Boolean!
+}
+
+type Mutation {
+  uploadTeamName(teamName: String!): Boolean!
+}

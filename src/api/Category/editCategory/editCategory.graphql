@@ -1,0 +1,13 @@
+enum ACTIONS {
+  EDIT
+  DELETE
+}
+
+type Mutation {
+  editCategory(
+    editCategoryId: String!
+    genre: String
+    post: [String!]
+    actions: ACTIONS!
+  ): Boolean!
+}

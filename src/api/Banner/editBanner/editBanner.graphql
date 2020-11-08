@@ -1,0 +1,13 @@
+type Mutation {
+  oneEditBanner(
+    id: String!
+    image: String!
+    url: String
+    upload: Boolean!
+    uploadTime: String
+    downTime: String
+    orderBy: Int!
+  ): Boolean!
+
+  deleteBanner(id: String!): Boolean!
+}

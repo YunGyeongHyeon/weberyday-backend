@@ -1,0 +1,10 @@
+type Mutation {
+  uploadBanner(
+    image: String!
+    url: String
+    upload: Boolean!
+    uploadTime: String!
+    downTime: String!
+    s3ThumbnailId: String
+  ): Boolean!
+}

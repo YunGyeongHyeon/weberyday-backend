@@ -1,0 +1,15 @@
+type Mutation {
+  uploadPost(
+    title: String!
+    description: String!
+    thumbnail: String!
+    backgroundImage: String!
+    s3ThumbnailId: String
+    s3BackgroundImageId: String
+    s3ThumbnailIdVersionId: String
+    s3BackgroundImageIdVersionId: String
+    category: String
+    broadcast: Boolean!
+    uploadDay: [String!]
+  ): Boolean!
+}
